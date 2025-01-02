@@ -1,0 +1,82 @@
+/* General styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #fff; /* 改為白色背景 */
+}
+
+.container {
+  display: grid;
+  gap: 10px;
+  padding: 10px;
+  background-color: #fff; /* 容器內也是白色背景 */
+  width: 100%; /* 改為占滿螢幕寬度 */
+  box-sizing: border-box; /* 確保內邊距和框線計算在寬度內 */
+}
+
+.box {
+  text-align: center;
+  padding: 20px;
+  border: 1px solid #000;
+  box-sizing: border-box;
+}
+
+/* Layout for larger screens */
+@media (min-width: 480px) {
+  .container {
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: auto auto;
+    gap: 10px;
+  }
+
+  .box1 {
+    grid-column: span 12;
+    height: 100px;
+    background-color: #90EE90;
+  }
+
+  .box2, .box3, .box4 {
+    grid-column: span 4;
+    height: 150px;
+    background-color: #ADD8E6;
+  }
+
+  .box5, .box6, .box7, .box8 {
+    grid-column: span 3;
+    height: 100px;
+    background-color: #D3D3D3;
+  }
+}
+
+/* Layout for smaller screens */
+@media (max-width: 500px) {
+  .container {
+    grid-template-columns: 1fr 1fr; /* 每行設為兩欄，均分寬度 */
+    grid-template-areas:
+      "box1 box1"
+      "box2 box2"
+      "box3 box3"
+      "box4 box4"
+      "box5 box6"
+      "box7 box8";
+  }
+
+  .box1 {
+    grid-column: span 2; /* 占據兩欄（整行） */
+    height: 125px;
+    background-color: #90EE90; /* 綠色背景 */
+  }
+
+  .box2, .box3, .box4 {
+    grid-column: span 2; /* 占據兩欄（整行） */
+    height: 75px;
+    background-color: #ADD8E6; /* 藍色背景 */
+  }
+
+  .box5, .box6, .box7, .box8 {
+    grid-column: span 1; /* 每個只占據一欄 */
+    height: 50px;
+    background-color: #D3D3D3; /* 灰色背景 */
+  }
+}
